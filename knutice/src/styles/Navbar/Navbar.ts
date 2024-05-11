@@ -26,17 +26,16 @@ const Header = styled.div`
 const LogoWrapper = styled.div`
   display: flex;
   align-items: center;
+
+  gap: 0.3rem;
   cursor: pointer;
 `;
 
-const Logo = styled.h2`
-  color: #fff;
-`;
+const Logo = styled.span`
+  font-size: 1.5rem;
+  font-weight: 500;
 
-const LogoEmphasis = styled.span`
-  color: transparent;
-  background: linear-gradient(to right, #d92142, #ecc3c3);
-  -webkit-background-clip: text;
+  color: #fff;
 `;
 
 const ItemWrapper = styled.div`
@@ -57,4 +56,4 @@ const Label = styled.span`
   color: #fff;
 `;
 
-export { NavContainer, Header, LogoWrapper, Logo, LogoEmphasis, Label, ItemWrapper, Item };
+export { NavContainer, Header, LogoWrapper, Logo, Label, ItemWrapper, Item };

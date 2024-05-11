@@ -4,7 +4,6 @@ import {
   Header,
   LogoWrapper,
   Logo,
-  LogoEmphasis,
   ItemWrapper,
   Item,
   Label,
@@ -15,9 +14,13 @@ const Navbar = () => {
     <NavContainer>
       <Header>
         <LogoWrapper>
-          <Logo>
-            <LogoEmphasis>KNUT</LogoEmphasis>ICE
-          </Logo>
+          <img
+            src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bell.png"
+            alt="Bell"
+            width="25"
+            height="25"
+          />
+          <Logo>KNUTICE</Logo>
         </LogoWrapper>
         <ItemWrapper>
           <Item>

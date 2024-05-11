@@ -41,4 +41,32 @@ const Emphasis = styled.span`
   animation: ${gradientAnimation} 3s ease infinite;
 `;
 
-export { FirstSec, TitleWrapper, Title, gradientAnimation, Emphasis };
+const scrlDwnIndc = keyframes`
+  0%   { transform: translateY(0); opacity: 0 }
+  30%  { transform: translateY(-10%); opacity: 0.3 }
+  50%  { transform: translateY(-20%); opacity: 0.5}
+  70%  { transform: translateY(-10%); opacity: 0.3 }
+  100% { transform: translateY(0); opacity: 0 }
+`;
+
+const ScrollWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 0.5rem;
+
+  gap: 1rem;
+
+  transform: translateX(-50%) translateY(0);
+  z-index: 2;
+
+  will-change: transform;
+  animation: ${scrlDwnIndc} 2.5s infinite linear;
+`;
+
+export { FirstSec, TitleWrapper, Title, gradientAnimation, Emphasis, ScrollWrapper };
