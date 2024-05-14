@@ -1,13 +1,15 @@
 'use client';
 
-import styled from 'styled-components';
+import { Navbar, Home, FirstSection, SecondSection } from '@/components';
 
-const Home = () => {
-  return <Text>Main</Text>;
+const Main = () => {
+  return (
+    <Home>
+      <Navbar />
+      <FirstSection />
+      <SecondSection />
+    </Home>
+  );
 };
 
-export default Home;
-
-const Text = styled.h1`
-  color: #15ff00;
-`;
+export default Main;
