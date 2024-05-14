@@ -8,6 +8,7 @@ import {
   Item,
   Label,
 } from '@/styles/Navbar/Navbar';
+import Link from 'next/link';
 
 const Navbar = () => {
   return (
@@ -23,12 +24,16 @@ const Navbar = () => {
           <Logo>KNUTICE</Logo>
         </LogoWrapper>
         <ItemWrapper>
-          <Item>
-            <Label>소개</Label>
-          </Item>
-          <Item>
-            <Label>공지</Label>
-          </Item>
+          <Link href="/">
+            <Item>
+              <Label>소개</Label>
+            </Item>
+          </Link>
+          <Link href="/notice">
+            <Item>
+              <Label>공지</Label>
+            </Item>
+          </Link>
           <Item>
             <Image src="/assets/sun.png" alt="" width={22} height={22} />
           </Item>
