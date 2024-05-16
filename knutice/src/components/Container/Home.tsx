@@ -1,4 +1,4 @@
-import { Container } from '@/styles/Main/Home';
+import { Container } from '@/styles/Home';
 
 interface IHomeProps {
   children: React.ReactNode;
