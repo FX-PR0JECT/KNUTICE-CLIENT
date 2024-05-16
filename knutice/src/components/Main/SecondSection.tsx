@@ -1,6 +1,6 @@
+import { HContent } from '@/components';
 import {
   SecondSec,
-  HomeContent,
   ContentWrapper,
   ContentDesc,
   Title,
@@ -41,7 +41,7 @@ const Content = ({ title, description, align = 'left', imageFirst = false }: Con
 const SecondSection = () => {
   return (
     <SecondSec>
-      <HomeContent>
+      <HContent>
         <Content
           title={`학교 공지만\n한곳에 모아\n빠르고, 쉽게`}
           description="학교 홈페이지에 있는 어쩌구 엄청 많은 콘텐츠들 어쩌구 딱 공지만 모아서 정리해 줌
@@ -54,7 +54,7 @@ const SecondSection = () => {
           align="right"
           imageFirst={true}
         />
-      </HomeContent>
+      </HContent>
     </SecondSec>
   );
 };
