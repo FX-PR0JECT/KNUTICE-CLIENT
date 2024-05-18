@@ -11,16 +11,16 @@ const ItemWrapper = styled.li`
   list-style: none;
 `;
 
-const Item = styled.a<{ isSelected: boolean }>`
+const Item = styled.a<{ $isSelected: boolean }>`
   padding: 0.9rem 1.5rem;
   border-radius: 1.875rem;
 
-  color: ${(props) => (props.isSelected ? '#000' : '#FFF')};
+  color: ${(props) => (props.$isSelected ? '#000' : '#FFF')};
   font-size: 1.3rem;
   font-weight: 500;
   text-decoration: none;
 
-  background: ${(props) => (props.isSelected ? '#FFF' : '#333333')};
+  background: ${(props) => (props.$isSelected ? '#FFF' : '#333333')};
 
   &:hover {
     color: #000;

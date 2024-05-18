@@ -4,6 +4,13 @@ import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { TabList, ItemWrapper, Item } from '@/styles/Notice/Tabs';
 
+interface ITab {
+  content: string;
+  tabName: string;
+  isSelected: boolean;
+  onClick: (tabName: string) => void;
+}
+
 const Tabs = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -39,8 +46,8 @@ const Tabs = () => {
       />
       <Tab
         content="장학"
-        tabName="scholarshop"
-        isSelected={selectedTab === 'scholarshop'}
+        tabName="scholarship"
+        isSelected={selectedTab === 'scholarship'}
         onClick={handleTabClick}
       />
       <Tab
@@ -53,19 +60,12 @@ const Tabs = () => {
   );
 };
 
-interface ITab {
-  content: string;
-  tabName: string;
-  isSelected: boolean;
-  onClick: (tabName: string) => void;
-}
-
 const Tab = ({ content, tabName, isSelected, onClick }: ITab) => {
   return (
     <ItemWrapper>
       <Item
         href="#"
-        isSelected={isSelected}
+        $isSelected={isSelected}
         onClick={(event) => {
           event.preventDefault();
           onClick(tabName);
