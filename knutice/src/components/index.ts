@@ -9,3 +9,4 @@ export { default as Title } from './Notice/Title';
 export { default as Tabs } from './Notice/Tabs';
 export { default as DefaultImage } from './Notice/DefaultImage';
 export { default as NoticeList } from './Notice/NoticeList';
+export { default as MainContent } from './Notice/MainContent';

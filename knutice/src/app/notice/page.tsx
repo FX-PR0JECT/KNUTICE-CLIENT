@@ -1,5 +1,14 @@
+'use client';
+
+import { Navbar, Home, MainContent } from '@/components';
+
 const Notice = () => {
-  return <h1>공지 페이지</h1>;
+  return (
+    <Home>
+      <Navbar />
+      <MainContent />
+    </Home>
+  );
 };
 
 export default Notice;
