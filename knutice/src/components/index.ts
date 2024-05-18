@@ -6,3 +6,4 @@ export { default as HContent } from './Common/HomeContent';
 export { default as Navbar } from './Common/Navbar';
 
 export { default as Title } from './Notice/Title';
+export { default as Tabs } from './Notice/Tabs';
