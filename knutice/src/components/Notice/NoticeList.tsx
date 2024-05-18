@@ -45,6 +45,9 @@ const NoticeList = () => {
         case 'academic':
           url += 'academicNews?page=0&size=18';
           break;
+        case 'scholarship':
+          url += 'scholarshipNews?page=0&size=18';
+          break;
         default:
           return;
       }
@@ -70,6 +73,7 @@ const NoticeList = () => {
 const NoticeCard = ({ notice, selectedTab }: INoticeCard) => {
   const department = (selectedTab: string) => {
     if (selectedTab === 'general') return '#일반소식 #general';
+    if (selectedTab === 'scholarship') return '#장학안내 #scholarship';
     if (selectedTab === 'academic') return '#학사공지사항 #acadmic';
   };
 
