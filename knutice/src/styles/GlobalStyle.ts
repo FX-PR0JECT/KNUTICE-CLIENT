@@ -25,6 +25,10 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 1.5;
   }
 
+  html, body {
+    overscroll-behavior: none;
+  }
+
   h1,
   h2,
   h3,
@@ -55,6 +59,12 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 
+  p {
+    white-space: pre-wrap;
+    word-wrap: break-word; /* IE 5.5-7 */
+    white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
+  }
+
   a:not([class]) {
     text-decoration-skip-ink: auto;
     color: currentColor;
@@ -82,13 +92,7 @@ export const GlobalStyle = createGlobalStyle`
     scroll-margin-block: 5ex;
   }
 
-  li:hover {
-    background-color: #e2e2e2;
-  }
-
-  p {
-    white-space: pre-wrap;
-    word-wrap: break-word; /* IE 5.5-7 */
-    white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
+  ::-webkit-scrollbar {
+    display: none;
   }
 `;

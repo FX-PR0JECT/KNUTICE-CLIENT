@@ -4,8 +4,9 @@ const NavContainer = styled.div`
   position: fixed;
 
   width: 100%;
-  height: 3.5rem;
+  height: 5rem;
 
+  border-bottom: 1px solid #2f2f2f;
   background-color: #000;
   color: #fff;
 
