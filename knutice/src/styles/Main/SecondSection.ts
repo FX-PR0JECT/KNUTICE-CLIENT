@@ -15,6 +15,7 @@ const HomeContent = styled.div`
 
   margin: auto;
   padding-top: 7rem;
+  overflow: hidden;
 `;
 
 const ContentWrapper = styled.div`
