@@ -15,7 +15,7 @@ const Navbar = () => {
     <NavContainer>
       <Header>
         <LogoWrapper>
-          <Logo>KNUTICE</Logo>
+          <Logo href="/">KNUTICE</Logo>
         </LogoWrapper>
         <ItemWrapper>
           <Link href="/">
