@@ -31,7 +31,8 @@ const LogoWrapper = styled.div`
   cursor: pointer;
 `;
 
-const Logo = styled.span`
+const Logo = styled.a`
+  text-decoration: none;
   font-size: 1.5rem;
   font-weight: 500;
 
