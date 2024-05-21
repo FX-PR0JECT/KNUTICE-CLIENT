@@ -4,7 +4,6 @@ import { useSearchParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
 import { API_URL } from '@/services/api';
-import { DefaultImage } from '@/components';
 import {
   CardWrapper,
   LinkItem,
@@ -83,7 +82,6 @@ const NoticeCard = ({ notice, selectedTab }: INoticeCard) => {
     <CardWrapper>
       <LinkItem href="/notice">
         <CardItem>
-          <DefaultImage />
           <Notice>
             <Title>{notice.title}</Title>
             <Department>{notice.departName}</Department>
