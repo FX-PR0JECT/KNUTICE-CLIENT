@@ -15,12 +15,15 @@ import {
   RegistrationDate,
   NoticeCardList,
 } from '@/styles/Notice/NoticeList';
+import { ContentImage } from '@/components';
 
 interface INotice {
   departName: string;
   nttId: number;
   registrationDate: string;
   title: string;
+  contentURL: string;
+  contentImage: string;
 }
 
 interface INoticeCard {
@@ -80,8 +83,9 @@ const NoticeCard = ({ notice, selectedTab }: INoticeCard) => {
 
   return (
     <CardWrapper>
-      <LinkItem href="/notice">
+      <LinkItem href={notice.contentURL}>
         <CardItem>
+          <ContentImage imageURL={notice.contentImage} />
           <Notice>
             <Title>{notice.title}</Title>
             <Department>{notice.departName}</Department>

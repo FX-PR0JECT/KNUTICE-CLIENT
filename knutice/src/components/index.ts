@@ -7,5 +7,6 @@ export { default as Navbar } from './Common/Navbar';
 
 export { default as Title } from './Notice/Title';
 export { default as Tabs } from './Notice/Tabs';
+export { default as ContentImage } from './Notice/ContentImage';
 export { default as NoticeList } from './Notice/NoticeList';
 export { default as MainContent } from './Notice/MainContent';
