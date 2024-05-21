@@ -39,16 +39,16 @@ const NoticeList = () => {
 
       switch (selectedTab) {
         case 'general':
-          url += 'generalNews?page=0&size=18';
+          url += 'generalNews?size=18';
           break;
         case 'event':
-          url += 'eventNews?page=0&size=18';
+          url += 'eventNews?size=18';
           break;
         case 'scholarship':
-          url += 'scholarshipNews?page=0&size=18';
+          url += 'scholarshipNews?size=18';
           break;
         case 'academic':
-          url += 'academicNews?page=0&size=18';
+          url += 'academicNews?size=18';
           break;
       }
 
