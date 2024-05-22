@@ -13,6 +13,7 @@ const CardWrapper = styled.li`
   width: 390px;
   padding: 0 0.8rem;
 
+  list-style: none;
   transition: transform 0.25s ease-in;
   transform: translateY(0);
 
@@ -27,13 +28,13 @@ const LinkItem = styled.a`
 
 const CardItem = styled.div`
   position: relative;
-
   margin-top: 1.6rem;
 
   border-radius: 14px;
-
-  background-color: #222224;
-  box-shadow: 4px 12px 30px 6px rgba(0, 0, 0, 0.09);
+  box-shadow:
+    0 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.03),
+    0 1rem 1rem 0 rgba(0, 0, 0, 0.03);
+  background: ${({ theme }) => theme.cardItemBg};
 `;
 
 const Notice = styled.div`
@@ -54,12 +55,12 @@ const Title = styled.h2`
   white-space: nowrap;
   overflow: hidden;
 
-  color: #fff;
+  color: ${({ theme }) => theme.color};
 `;
 
 const Department = styled.span`
-  color: #fff;
   font-weight: 400;
+  color: ${({ theme }) => theme.color};
 `;
 
 const Classification = styled.span`

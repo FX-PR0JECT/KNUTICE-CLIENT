@@ -15,16 +15,17 @@ const Item = styled.a<{ $isSelected: boolean }>`
   padding: 0.9rem 1.5rem;
   border-radius: 1.875rem;
 
-  color: ${(props) => (props.$isSelected ? '#000' : '#FFF')};
   font-size: 1.3rem;
-  font-weight: 500;
+  font-weight: 400;
   text-decoration: none;
 
-  background: ${(props) => (props.$isSelected ? '#FFF' : '#333333')};
+  color: ${({ $isSelected, theme }) => ($isSelected ? theme.selectedTabColor : theme.color)};
+  background: ${({ $isSelected, theme }) => ($isSelected ? theme.selectedTabBg : theme.tabBgColor)};
 
   &:hover {
-    color: #000;
-    background: #fff;
+    color: ${({ theme }) => theme.selectedTabColor};
+    background: ${({ theme }) => theme.selectedTabBg};
+
     transition: 0.5s;
   }
 `;

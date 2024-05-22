@@ -22,7 +22,7 @@ const TitleWrapper = styled.div`
 
 const Title = styled.h1`
   font-size: 5rem;
-  color: #e3e3e3;
+  color: ${({ theme }) => theme.color};
 `;
 
 const gradientAnimation = keyframes`
