@@ -34,12 +34,9 @@ const gradientAnimation = keyframes`
 
 const Emphasis = styled.span`
   color: transparent;
-  background: linear-gradient(
-    to right,
-    ${COLORS['gradient-first']},
-    ${COLORS['gradient-second']}
-  );
+  background: linear-gradient(to right, ${COLORS['gradient-first']}, ${COLORS['gradient-second']});
 
+  background: linear-gradient(to right, #ff0048, #fcb2c5);
   background-size: 200% 200%;
   -webkit-background-clip: text;
 
@@ -74,11 +71,4 @@ const ScrollWrapper = styled.div`
   animation: ${scrlDwnIndc} 2.5s infinite linear;
 `;
 
-export {
-  FirstSec,
-  TitleWrapper,
-  Title,
-  gradientAnimation,
-  Emphasis,
-  ScrollWrapper,
-};
+export { FirstSec, TitleWrapper, Title, gradientAnimation, Emphasis, ScrollWrapper };

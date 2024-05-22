@@ -1,11 +1,12 @@
 'use client';
 
+import { NOTICE_CONTENT } from '@/constants/content';
 import { HContent, Title, Tabs, NoticeList } from '@/components';
 
 const MainContent = () => {
   return (
     <HContent>
-      <Title title="공지 확인하기" description="우리 학교 공지를 한곳에서 빠르게" />
+      <Title title={NOTICE_CONTENT.title} description={NOTICE_CONTENT.description} />
       <Tabs />
       <NoticeList />
     </HContent>
