@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+
+import { INoticeTabs, NOTICE_TABS } from '@/constants/content';
 import { TabList, ItemWrapper, Item } from '@/styles/Notice/Tabs';
 
 interface ITab {
@@ -32,30 +34,15 @@ const Tabs = () => {
 
   return (
     <TabList>
-      <Tab
-        content="일반"
-        tabName="general"
-        isSelected={selectedTab === 'general'}
-        onClick={handleTabClick}
-      />
-      <Tab
-        content="행사"
-        tabName="event"
-        isSelected={selectedTab === 'event'}
-        onClick={handleTabClick}
-      />
-      <Tab
-        content="장학"
-        tabName="scholarship"
-        isSelected={selectedTab === 'scholarship'}
-        onClick={handleTabClick}
-      />
-      <Tab
-        content="학사"
-        tabName="academic"
-        isSelected={selectedTab === 'academic'}
-        onClick={handleTabClick}
-      />
+      {(Object.keys(NOTICE_TABS) as Array<keyof INoticeTabs>).map((tab) => (
+        <Tab
+          key={tab}
+          content={NOTICE_TABS[tab]}
+          tabName={tab}
+          isSelected={selectedTab === tab}
+          onClick={() => handleTabClick(tab)}
+        />
+      ))}
     </TabList>
   );
 };
