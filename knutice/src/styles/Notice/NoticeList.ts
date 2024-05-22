@@ -11,7 +11,7 @@ const NoticeCardList = styled.ul`
 
 /* Notice Card Component Styles */
 const CardWrapper = styled.li`
-  width: 390px;
+  width: 24.375rem;
   padding: 0 0.8rem;
 
   list-style: none;
@@ -31,7 +31,7 @@ const CardItem = styled.div`
   position: relative;
   margin-top: 1.6rem;
 
-  border-radius: 14px;
+  border-radius: 0.875rem;
   box-shadow:
     0 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.03),
     0 1rem 1rem 0 rgba(0, 0, 0, 0.03);

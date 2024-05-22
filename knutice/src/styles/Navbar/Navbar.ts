@@ -6,7 +6,7 @@ const NavContainer = styled.div`
   width: 100%;
   height: 5rem;
 
-  border-bottom: 1px solid ${({ theme }) => theme.borderBottom};
+  border-bottom: 0.063rem solid ${({ theme }) => theme.borderBottom};
   background-color: ${({ theme }) => theme.backgroundColor};
 
   z-index: 3;
