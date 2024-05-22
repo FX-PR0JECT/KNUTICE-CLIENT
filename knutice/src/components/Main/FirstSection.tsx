@@ -1,3 +1,4 @@
+import { COLORS } from '@/constants/color';
 import { FirstSec, TitleWrapper, Title, Emphasis, ScrollWrapper } from '@/styles/Main/FirstSection';
 
 const FirstSection = () => {
@@ -16,7 +17,7 @@ const FirstSection = () => {
         <svg width={50} height={50}>
           <path
             d="M3 3L21.5 18L40 3"
-            stroke="#fff"
+            stroke={COLORS.white}
             strokeWidth="5"
             strokeLinecap="round"
             strokeLinejoin="round"></path>

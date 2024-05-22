@@ -1,45 +1,41 @@
+import { COLORS } from '@/constants/color';
+
 export const THEME = {
   dark: {
-    backgroundColor: '#000',
+    backgroundColor: COLORS['bg-dark'],
 
     // Main
-    color: '#e3e3e3',
-    borderColor: '#ffffffc8',
+    color: COLORS['font-dark'],
+    borderColor: COLORS['border-dark'],
 
     // Navbar
-    borderBottom: '#2f2f2f',
+    borderBottom: COLORS['border-bottom-dark'],
 
     // NoticeList
-    cardItemBg: '#222224',
+    cardItemBg: COLORS['card-bg-dark'],
 
     // Tabs
-    tabFontColor: '#000',
-    tabBgColor: '#333333',
-
-    hoverTabBg: '#eee',
-
-    selectedTabBg: '#eee',
-    selectedTabColor: '#000',
+    tabBgColor: COLORS['tab-bg-dark'],
+    selectedTabBg: COLORS['s-tab-bg-dark'],
+    selectedTabColor: COLORS['s-tab-color-dark'],
   },
 
   light: {
-    backgroundColor: '#fff',
+    backgroundColor: COLORS['bg-light'],
 
     // Main
-    color: '#000',
-    borderColor: '#2f2f2f',
+    color: COLORS['font-light'],
+    borderColor: COLORS['border-light'],
 
     // Navbar
-    borderBottom: '#eee',
+    borderBottom: COLORS['border-bottom-light'],
 
     // NoticeList
-    cardItemBg: '#fff',
+    cardItemBg: COLORS['card-bg-light'],
 
     // Tabs
-    tabFontColor: '#000',
-    tabBgColor: '#eee',
-
-    selectedTabBg: '#000',
-    selectedTabColor: '#e3e3e3',
+    tabBgColor: COLORS['tab-bg-light'],
+    selectedTabBg: COLORS['s-tab-bg-light'],
+    selectedTabColor: COLORS['s-tab-color-light'],
   },
 };

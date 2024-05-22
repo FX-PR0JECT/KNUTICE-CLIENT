@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { COLORS } from '@/constants/color';
 
 const NoticeCardList = styled.ul`
   display: grid;
@@ -65,12 +66,12 @@ const Department = styled.span`
 
 const Classification = styled.span`
   letter-spacing: 0.03rem;
-  color: #999;
+  color: ${COLORS.gray2};
 `;
 
 const RegistrationDate = styled.span`
   margin-top: 2rem;
-  color: #797979;
+  color: ${COLORS.gray1};
 `;
 
 export {
