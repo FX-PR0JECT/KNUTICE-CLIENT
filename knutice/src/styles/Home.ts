@@ -5,4 +5,6 @@ export const Container = styled.div`
   width: 100%;
   min-height: 100vh;
   background-color: ${({ theme }) => theme.backgroundColor};
+
+  transition: 0.3s linear;
 `;
