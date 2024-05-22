@@ -36,13 +36,13 @@ const ContentDesc = styled.div`
 
 const Title = styled.h1<{ $align?: string }>`
   text-align: ${(props) => (props.$align ? props.$align : 'left')};
-  color: #fff;
+  color: ${({ theme }) => theme.color};
   font-size: 3.8rem;
   line-height: 1.2;
 `;
 
 const Description = styled.span`
-  color: #fff;
+  color: ${({ theme }) => theme.color};
   font-size: 1.25rem;
   line-height: 1.45;
   white-space: pre-line;
@@ -58,7 +58,7 @@ const Image = styled.div`
   width: 100%;
   height: 100%;
 
-  border: 2px solid #ffffffc8;
+  border: 2px solid ${({ theme }) => theme.borderColor};
   border-radius: 1.3rem;
 `;
 

@@ -10,7 +10,12 @@ import {
 } from '@/styles/Navbar/Navbar';
 import Link from 'next/link';
 
-const Navbar = () => {
+interface INavbar {
+  mode: boolean;
+  themeHandler: () => void;
+}
+
+const Navbar = ({ mode, themeHandler }: INavbar) => {
   return (
     <NavContainer>
       <Header>
@@ -29,7 +34,23 @@ const Navbar = () => {
             </Item>
           </Link>
           <Item>
-            <Image src="/assets/sun.png" alt="" width={22} height={22} />
+            {mode ? (
+              <Image
+                src="/assets/sun.png"
+                alt="sun icon"
+                width={22}
+                height={22}
+                onClick={themeHandler}
+              />
+            ) : (
+              <Image
+                src="/assets/moon.png"
+                alt="moon icon"
+                width={22}
+                height={22}
+                onClick={themeHandler}
+              />
+            )}
           </Item>
         </ItemWrapper>
       </Header>

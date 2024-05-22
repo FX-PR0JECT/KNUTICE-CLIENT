@@ -6,11 +6,11 @@ const NavContainer = styled.div`
   width: 100%;
   height: 5rem;
 
-  border-bottom: 1px solid #2f2f2f;
-  background-color: #000;
-  color: #fff;
+  border-bottom: 1px solid ${({ theme }) => theme.borderBottom};
+  background-color: ${({ theme }) => theme.backgroundColor};
 
   z-index: 3;
+  transition: 0.3s linear;
 `;
 
 const Header = styled.div`
@@ -36,7 +36,7 @@ const Logo = styled.a`
   font-size: 1.5rem;
   font-weight: 500;
 
-  color: #fff;
+  color: ${({ theme }) => theme.color};
 `;
 
 const ItemWrapper = styled.div`
@@ -54,7 +54,7 @@ const Label = styled.span`
   font-size: 1.25rem;
   font-weight: 500;
 
-  color: #fff;
+  color: ${({ theme }) => theme.color};
 `;
 
 export { NavContainer, Header, LogoWrapper, Logo, Label, ItemWrapper, Item };
