@@ -16,6 +16,7 @@ import {
   NoticeCardList,
 } from '@/styles/Notice/NoticeList';
 import { ContentImage } from '@/components';
+import { departmentTag } from '@/utils/departmentTag';
 
 interface INotice {
   departName: string;
@@ -74,12 +75,6 @@ const NoticeList = () => {
 };
 
 const NoticeCard = ({ notice, selectedTab }: INoticeCard) => {
-  const department = (selectedTab: string) => {
-    if (selectedTab === 'general') return '#일반소식 #general';
-    if (selectedTab === 'event') return '#행사안내 #event';
-    if (selectedTab === 'scholarship') return '#장학안내 #scholarship';
-    if (selectedTab === 'academic') return '#학사공지사항 #acadmic';
-  };
 
   return (
     <CardWrapper>
@@ -89,7 +84,7 @@ const NoticeCard = ({ notice, selectedTab }: INoticeCard) => {
           <Notice>
             <Title>{notice.title}</Title>
             <Department>{notice.departName}</Department>
-            <Classification>{department(selectedTab)}</Classification>
+            <Classification>{departmentTag(selectedTab)}</Classification>
             <RegistrationDate>{notice.registrationDate}</RegistrationDate>
           </Notice>
         </CardItem>
