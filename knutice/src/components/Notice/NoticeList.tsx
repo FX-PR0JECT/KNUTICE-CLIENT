@@ -1,9 +1,9 @@
 'use client';
 
+import { useInfiniteQuery } from 'react-query';
 import { useSearchParams } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { forwardRef, useCallback, useRef, Fragment } from 'react';
 
-import { API_URL } from '@/services/api';
 import {
   CardWrapper,
   LinkItem,
@@ -15,6 +15,7 @@ import {
   RegistrationDate,
   NoticeCardList,
 } from '@/styles/Notice/NoticeList';
+import { API_URL } from '@/services/api';
 import { ContentImage } from '@/components';
 import { departmentTag } from '@/utils/departmentTag';
 
@@ -25,6 +26,7 @@ interface INotice {
   title: string;
   contentURL: string;
   contentImage: string;
+  boardNumber: number;
 }
 
 interface INoticeCard {
@@ -34,50 +36,79 @@ interface INoticeCard {
 
 const NoticeList = () => {
   const params = useSearchParams();
-  const [notices, setNotices] = useState([]);
   const selectedTab = params.get('tab') || 'general';
+  const observer = useRef<IntersectionObserver | null>(null);
 
-  useEffect(() => {
-    const fetchNotices = async () => {
-      let url = `${API_URL}/`;
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isError, isLoading } =
+    useInfiniteQuery(
+      ['notices', selectedTab],
+      async ({ pageParam }) => {
+        const url = pageParam
+          ? `${API_URL}/${selectedTab}News?startBoardNumber=${pageParam}&size=18`
+          : `${API_URL}/${selectedTab}News?size=18`;
 
-      switch (selectedTab) {
-        case 'general':
-          url += 'generalNews?size=18';
-          break;
-        case 'event':
-          url += 'eventNews?size=18';
-          break;
-        case 'scholarship':
-          url += 'scholarshipNews?size=18';
-          break;
-        case 'academic':
-          url += 'academicNews?size=18';
-          break;
+        const response = await fetch(url, { cache: 'no-store' });
+        const result = await response.json();
+
+        return result.data;
+      },
+      {
+        getNextPageParam: (lastPage) => {
+          if (lastPage.length < 18) return undefined;
+          return lastPage[lastPage.length - 1].boardNumber;
+        },
+        retry: 0,
+        refetchOnMount: false,
+        refetchOnReconnect: false,
+        refetchOnWindowFocus: false,
       }
+    );
 
-      const response = await fetch(url, { cache: 'no-store' });
-      const data = await response.json();
+  const lastNoticeElementRef = useCallback(
+    (node: HTMLLIElement) => {
+      if (isFetchingNextPage) return;
+      if (observer.current) observer.current.disconnect();
 
-      setNotices(data.data);
-    };
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && hasNextPage) fetchNextPage();
+      });
 
-    fetchNotices();
-  }, [selectedTab]);
+      if (node) observer.current.observe(node);
+    },
+    [isFetchingNextPage, fetchNextPage, hasNextPage]
+  );
+
+  /* skeleton component 추가 필요 */
+  if (!data || isLoading) return <div>로딩 중...</div>;
+  if (isError) return <></>;
 
   return (
     <NoticeCardList>
-      {notices.map((notice: INotice) => (
-        <NoticeCard key={notice.nttId} selectedTab={selectedTab} notice={notice} />
+      {data.pages.map((notices, i) => (
+        <Fragment key={i}>
+          {notices.map((notice: INotice, index: number) => {
+            if (notices.length === index + 1) {
+              return (
+                <NoticeCard
+                  ref={lastNoticeElementRef}
+                  key={notice.nttId}
+                  selectedTab={selectedTab}
+                  notice={notice}
+                />
+              );
+            } else {
+              return <NoticeCard key={notice.nttId} selectedTab={selectedTab} notice={notice} />;
+            }
+          })}
+        </Fragment>
       ))}
     </NoticeCardList>
   );
 };
 
-const NoticeCard = ({ notice, selectedTab }: INoticeCard) => {
-
+const NoticeCard = forwardRef<HTMLLIElement, INoticeCard>(({ notice, selectedTab }, ref) => {
   return (
-    <CardWrapper>
+    <CardWrapper ref={ref}>
       <LinkItem href={notice.contentURL}>
         <CardItem>
           <ContentImage imageURL={notice.contentImage} />
@@ -91,6 +122,6 @@ const NoticeCard = ({ notice, selectedTab }: INoticeCard) => {
       </LinkItem>
     </CardWrapper>
   );
-};
+});
 
 export default NoticeList;
