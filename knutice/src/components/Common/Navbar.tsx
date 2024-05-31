@@ -11,14 +11,15 @@ import {
 import Link from 'next/link';
 
 interface INavbar {
+  device: TDevice;
   mode: boolean;
   themeHandler: () => void;
 }
 
-const Navbar = ({ mode, themeHandler }: INavbar) => {
+const Navbar = ({ device, mode, themeHandler }: INavbar) => {
   return (
     <NavContainer>
-      <Header>
+      <Header $device={device}>
         <LogoWrapper>
           <Logo href="/">KNUTICE</Logo>
         </LogoWrapper>
