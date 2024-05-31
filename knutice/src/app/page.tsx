@@ -13,9 +13,9 @@ const Main = () => {
   return (
     <ThemeProvider theme={isDarkMode ? THEME.dark : THEME.light}>
       <Home>
-        <SecondSection />
         <Navbar mode={isDarkMode} themeHandler={switchTheme} device={getDeviceType()} />
         <FirstSection device={getDeviceType()} />
+        <SecondSection device={getDeviceType()} />
       </Home>
     </ThemeProvider>
   );
