@@ -16,8 +16,8 @@ import {
   NoticeCardList,
 } from '@/styles/Notice/NoticeList';
 import { API_URL } from '@/services/api';
-import { ContentImage } from '@/components';
 import { departmentTag } from '@/utils/departmentTag';
+import { ContentImage, SkeletonCard } from '@/components';
 
 interface INotice {
   departName: string;
@@ -38,6 +38,8 @@ const NoticeList = () => {
   const params = useSearchParams();
   const selectedTab = params.get('tab') || 'general';
   const observer = useRef<IntersectionObserver | null>(null);
+
+  const skeletonCount = Array.from({ length: 18 }).fill(0);
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isError, isLoading } =
     useInfiniteQuery(
@@ -78,8 +80,16 @@ const NoticeList = () => {
     [isFetchingNextPage, fetchNextPage, hasNextPage]
   );
 
-  /* skeleton component 추가 필요 */
-  if (!data || isLoading) return <div>로딩 중...</div>;
+  if (!data || isLoading) {
+    return (
+      <NoticeCardList>
+        {skeletonCount.map((_, index) => (
+          <SkeletonCard key={index} />
+        ))}
+      </NoticeCardList>
+    );
+  }
+
   if (isError) return <></>;
 
   return (
