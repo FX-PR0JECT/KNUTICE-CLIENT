@@ -1,11 +1,19 @@
 import styled, { css } from 'styled-components';
 
-const TitleContainer = styled.div`
+const TitleContainer = styled.div<{ $device: TDevice }>`
   display: flex;
   flex-direction: column;
 
   padding: 2.4rem 0 3rem 0.8rem;
   gap: 0.5rem;
+
+  ${({ $device }) => {
+    if ($device === 'mobile') {
+      return css`
+        padding: 1rem 0 1.75rem 0.8rem;
+      `;
+    }
+  }}
 `;
 
 const TitleText = styled.h1<{ $device: TDevice }>`
