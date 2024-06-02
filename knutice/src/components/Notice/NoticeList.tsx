@@ -30,11 +30,12 @@ interface INotice {
 }
 
 interface INoticeCard {
+  device: TDevice;
   notice: INotice;
   selectedTab: string;
 }
 
-const NoticeList = () => {
+const NoticeList = ({ device }: { device: TDevice }) => {
   const params = useSearchParams();
   const selectedTab = params.get('tab') || 'general';
   const observer = useRef<IntersectionObserver | null>(null);
@@ -82,9 +83,9 @@ const NoticeList = () => {
 
   if (!data || isLoading) {
     return (
-      <NoticeCardList>
+      <NoticeCardList $device={device}>
         {skeletonCount.map((_, index) => (
-          <SkeletonCard key={index} />
+          <SkeletonCard device={device} key={index} />
         ))}
       </NoticeCardList>
     );
@@ -93,13 +94,14 @@ const NoticeList = () => {
   if (isError) return <></>;
 
   return (
-    <NoticeCardList>
+    <NoticeCardList $device={device}>
       {data.pages.map((notices, i) => (
         <Fragment key={i}>
           {notices.map((notice: INotice, index: number) => {
             if (notices.length === index + 1) {
               return (
                 <NoticeCard
+                  device={device}
                   ref={lastNoticeElementRef}
                   key={notice.nttId}
                   selectedTab={selectedTab}
@@ -107,7 +109,14 @@ const NoticeList = () => {
                 />
               );
             } else {
-              return <NoticeCard key={notice.nttId} selectedTab={selectedTab} notice={notice} />;
+              return (
+                <NoticeCard
+                  device={device}
+                  key={notice.nttId}
+                  selectedTab={selectedTab}
+                  notice={notice}
+                />
+              );
             }
           })}
         </Fragment>
@@ -116,22 +125,24 @@ const NoticeList = () => {
   );
 };
 
-const NoticeCard = forwardRef<HTMLLIElement, INoticeCard>(({ notice, selectedTab }, ref) => {
-  return (
-    <CardWrapper ref={ref}>
-      <LinkItem href={notice.contentURL}>
-        <CardItem>
-          <ContentImage imageURL={notice.contentImage} />
-          <Notice>
-            <Title>{notice.title}</Title>
-            <Department>{notice.departName}</Department>
-            <Classification>{departmentTag(selectedTab)}</Classification>
-            <RegistrationDate>{notice.registrationDate}</RegistrationDate>
-          </Notice>
-        </CardItem>
-      </LinkItem>
-    </CardWrapper>
-  );
-});
+const NoticeCard = forwardRef<HTMLLIElement, INoticeCard>(
+  ({ notice, selectedTab, device }, ref) => {
+    return (
+      <CardWrapper $device={device} ref={ref}>
+        <LinkItem href={notice.contentURL}>
+          <CardItem>
+            <ContentImage device={device} imageURL={notice.contentImage} />
+            <Notice>
+              <Title $device={device}>{notice.title}</Title>
+              <Department>{notice.departName}</Department>
+              <Classification>{departmentTag(selectedTab)}</Classification>
+              <RegistrationDate>{notice.registrationDate}</RegistrationDate>
+            </Notice>
+          </CardItem>
+        </LinkItem>
+      </CardWrapper>
+    );
+  }
+);
 
 export default NoticeList;

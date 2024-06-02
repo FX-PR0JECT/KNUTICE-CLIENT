@@ -1,11 +1,11 @@
 import { COLORS } from '@/constants/color';
 import { FirstSec, TitleWrapper, Title, Emphasis, ScrollWrapper } from '@/styles/Main/FirstSection';
 
-const FirstSection = () => {
+const FirstSection = ({ device }: { device: TDevice }) => {
   return (
     <FirstSec>
       <TitleWrapper>
-        <Title>
+        <Title $device={device}>
           언제, 어디서든
           <br />
           우리 학교 <Emphasis>[ 소식 ]</Emphasis>을

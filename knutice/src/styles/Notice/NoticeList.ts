@@ -1,17 +1,24 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { COLORS } from '@/constants/color';
 
-const NoticeCardList = styled.ul`
+const NoticeCardList = styled.ul<{ $device: TDevice }>`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 1rem;
+  grid-template-columns: 1fr;
+  row-gap: 1.2rem;
 
   padding: 0;
+
+  ${({ $device }) => {
+    if ($device === 'desktop') {
+      return css`
+        grid-template-columns: repeat(3, 1fr);
+      `;
+    }
+  }}
 `;
 
 /* Notice Card Component Styles */
-const CardWrapper = styled.li`
-  width: 24.375rem;
+const CardWrapper = styled.li<{ $device: TDevice }>`
   padding: 0 0.8rem;
 
   list-style: none;
@@ -21,6 +28,23 @@ const CardWrapper = styled.li`
   &:hover {
     transform: translateY(-0.625rem);
   }
+
+  ${({ $device }) => {
+    switch ($device) {
+      case 'desktop':
+        return css`
+          width: 22.875rem;
+        `;
+      case 'tablet':
+        return css`
+          width: 39rem;
+        `;
+      case 'mobile':
+        return css`
+          width: 20rem;
+        `;
+    }
+  }}
 `;
 
 const LinkItem = styled.a`
@@ -29,7 +53,7 @@ const LinkItem = styled.a`
 
 const CardItem = styled.div`
   position: relative;
-  margin-top: 1.6rem;
+  margin-top: 0.5rem;
 
   border-radius: 0.875rem;
   box-shadow:
@@ -43,10 +67,12 @@ const Notice = styled.div`
   flex-direction: column;
 
   padding: 1rem 1.2rem;
-  gap: 0.4rem;
+  gap: 0.25rem;
+
+  font-size: 0.975rem;
 `;
 
-const Title = styled.h2`
+const Title = styled.h2<{ $device: TDevice }>`
   display: block;
 
   font-weight: 600;
@@ -57,6 +83,23 @@ const Title = styled.h2`
   overflow: hidden;
 
   color: ${({ theme }) => theme.color};
+
+  ${({ $device }) => {
+    switch ($device) {
+      case 'desktop':
+        return css`
+          font-size: 1.575rem;
+        `;
+      case 'tablet':
+        return css`
+          font-size: 1.575rem;
+        `;
+      case 'mobile':
+        return css`
+          font-size: 1.475rem;
+        `;
+    }
+  }}
 `;
 
 const Department = styled.span`
@@ -70,7 +113,7 @@ const Classification = styled.span`
 `;
 
 const RegistrationDate = styled.span`
-  margin-top: 2rem;
+  margin-top: 1.3rem;
   color: ${COLORS.gray1};
 `;
 

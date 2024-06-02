@@ -7,13 +7,14 @@ import { INoticeTabs, NOTICE_TABS } from '@/constants/content';
 import { TabList, ItemWrapper, Item } from '@/styles/Notice/Tabs';
 
 interface ITab {
+  device: TDevice;
   content: string;
   tabName: string;
   isSelected: boolean;
   onClick: (tabName: string) => void;
 }
 
-const Tabs = () => {
+const Tabs = ({ device }: { device: TDevice }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [selectedTab, setSelectedTab] = useState('');
@@ -36,6 +37,7 @@ const Tabs = () => {
     <TabList>
       {(Object.keys(NOTICE_TABS) as Array<keyof INoticeTabs>).map((tab) => (
         <Tab
+          device={device}
           key={tab}
           content={NOTICE_TABS[tab]}
           tabName={tab}
@@ -47,10 +49,11 @@ const Tabs = () => {
   );
 };
 
-const Tab = ({ content, tabName, isSelected, onClick }: ITab) => {
+const Tab = ({ device, content, tabName, isSelected, onClick }: ITab) => {
   return (
     <ItemWrapper>
       <Item
+        $device={device}
         href="#"
         $isSelected={isSelected}
         onClick={(event) => {

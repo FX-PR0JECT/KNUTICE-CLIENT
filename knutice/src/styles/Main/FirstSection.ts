@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import { COLORS } from '@/constants/color';
 
 const FirstSec = styled.div`
@@ -21,9 +21,25 @@ const TitleWrapper = styled.div`
   height: 100%;
 `;
 
-const Title = styled.h1`
-  font-size: 5rem;
+const Title = styled.h1<{ $device: TDevice }>`
   color: ${({ theme }) => theme.color};
+
+  ${({ $device }) => {
+    switch ($device) {
+      case 'desktop':
+        return css`
+          font-size: 5rem;
+        `;
+      case 'tablet':
+        return css`
+          font-size: 4.5rem;
+        `;
+      case 'mobile':
+        return css`
+          font-size: 2.5rem;
+        `;
+    }
+  }}
 `;
 
 const gradientAnimation = keyframes`
@@ -58,8 +74,6 @@ const ScrollWrapper = styled.div`
   align-items: center;
 
   position: absolute;
-
-  left: 50%;
   bottom: 0.5rem;
 
   gap: 1rem;

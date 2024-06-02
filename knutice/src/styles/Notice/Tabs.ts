@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const TabList = styled.ul`
   display: flex;
@@ -11,9 +11,9 @@ const ItemWrapper = styled.li`
   list-style: none;
 `;
 
-const Item = styled.a<{ $isSelected: boolean }>`
-  padding: 0.9rem 1.5rem;
+const Item = styled.a<{ $isSelected: boolean; $device: TDevice }>`
   border-radius: 1.875rem;
+  padding: 0.9rem 1.5rem;
 
   font-size: 1.3rem;
   font-weight: 400;
@@ -28,6 +28,16 @@ const Item = styled.a<{ $isSelected: boolean }>`
 
     transition: 0.5s;
   }
+
+  ${({ $device }) => {
+    switch ($device) {
+      case 'mobile':
+        return css`
+          padding: 0.7rem 1.1rem;
+          font-size: 1.1rem;
+        `;
+    }
+  }}
 `;
 
 export { TabList, ItemWrapper, Item };

@@ -3,14 +3,15 @@
 import { TitleContainer, TitleText, Description } from '@/styles/Notice/Title';
 
 interface ITitle {
+  device: TDevice;
   title: string;
   description: string;
 }
 
-const Title = ({ title, description }: ITitle) => {
+const Title = ({ title, description, device }: ITitle) => {
   return (
-    <TitleContainer>
-      <TitleText>
+    <TitleContainer $device={device}>
+      <TitleText $device={device}>
         <img
           src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Alarm%20Clock.png"
           alt="Alarm Clock"
@@ -19,7 +20,7 @@ const Title = ({ title, description }: ITitle) => {
         />
         {title}
       </TitleText>
-      <Description>{description}</Description>
+      <Description $device={device}>{description}</Description>
     </TitleContainer>
   );
 };
