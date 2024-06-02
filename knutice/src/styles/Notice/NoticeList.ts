@@ -4,15 +4,15 @@ import { COLORS } from '@/constants/color';
 const NoticeCardList = styled.ul<{ $device: TDevice }>`
   display: grid;
   grid-template-columns: 1fr;
+  row-gap: 1.2rem;
 
   padding: 0;
 
   ${({ $device }) => {
-    switch ($device) {
-      case 'desktop':
-        return css`
-          grid-template-columns: repeat(3, 1fr);
-        `;
+    if ($device === 'desktop') {
+      return css`
+        grid-template-columns: repeat(3, 1fr);
+      `;
     }
   }}
 `;
@@ -53,7 +53,7 @@ const LinkItem = styled.a`
 
 const CardItem = styled.div`
   position: relative;
-  margin-top: 1.6rem;
+  margin-top: 0.5rem;
 
   border-radius: 0.875rem;
   box-shadow:
