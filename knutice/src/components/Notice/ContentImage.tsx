@@ -1,14 +1,15 @@
 'use client';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface imageURL {
+  device: TDevice;
   imageURL?: string;
 }
 
-const ContentImage = ({ imageURL }: imageURL) => {
+const ContentImage = ({ device, imageURL }: imageURL) => {
   return (
-    <ImageWrapper>
+    <ImageWrapper $device={device}>
       {imageURL ? (
         <Img src={imageURL} alt="공지 이미지" />
       ) : (
@@ -20,9 +21,18 @@ const ContentImage = ({ imageURL }: imageURL) => {
 
 export default ContentImage;
 
-const ImageWrapper = styled.div`
+const ImageWrapper = styled.div<{ $device: TDevice }>`
   width: 100%;
   height: 12.5rem;
+
+  ${({ $device }) => {
+    switch ($device) {
+      case 'mobile':
+        return css`
+          height: 10.5rem;
+        `;
+    }
+  }}
 `;
 
 const Img = styled.img`

@@ -3,12 +3,16 @@
 import { NOTICE_CONTENT } from '@/constants/content';
 import { HContent, Title, Tabs, NoticeList } from '@/components';
 
-const MainContent = () => {
+const MainContent = ({ device }: { device: TDevice }) => {
   return (
-    <HContent>
-      <Title title={NOTICE_CONTENT.title} description={NOTICE_CONTENT.description} />
-      <Tabs />
-      <NoticeList />
+    <HContent device={device}>
+      <Title
+        device={device}
+        title={NOTICE_CONTENT.title}
+        description={NOTICE_CONTENT.description}
+      />
+      <Tabs device={device} />
+      <NoticeList device={device} />
     </HContent>
   );
 };

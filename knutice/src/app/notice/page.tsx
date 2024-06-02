@@ -1,9 +1,11 @@
 'use client';
 
 import { ThemeProvider } from 'styled-components';
+
+import getDeviceType from '@/app/utils';
 import useTheme from '@/hooks/useTheme';
-import { Navbar, Home, MainContent } from '@/components';
 import { THEME } from '@/styles/theme';
+import { Navbar, Home, MainContent } from '@/components';
 
 const Notice = () => {
   const { isDarkMode, switchTheme } = useTheme();
@@ -11,8 +13,8 @@ const Notice = () => {
   return (
     <ThemeProvider theme={isDarkMode ? THEME.dark : THEME.light}>
       <Home>
-        <Navbar mode={isDarkMode} themeHandler={switchTheme} />
-        <MainContent />
+        <Navbar mode={isDarkMode} themeHandler={switchTheme} device={getDeviceType()} />
+        <MainContent device={getDeviceType()} />
       </Home>
     </ThemeProvider>
   );
