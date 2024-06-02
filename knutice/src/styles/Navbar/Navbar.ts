@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-const NavContainer = styled.div`
+const NavContainer = styled.div<{ $device: TDevice }>`
   position: fixed;
 
   width: 100%;
@@ -11,6 +11,14 @@ const NavContainer = styled.div`
 
   z-index: 3;
   transition: 0.3s linear;
+
+  ${({ $device }) => {
+    if ($device === 'mobile') {
+      return css`
+        height: 4.25rem;
+      `;
+    }
+  }}
 `;
 
 const Header = styled.div<{ $device: TDevice }>`
@@ -19,7 +27,6 @@ const Header = styled.div<{ $device: TDevice }>`
   align-items: center;
 
   height: 100%;
-
   margin: auto;
 
   ${({ $device }) => {
@@ -47,12 +54,20 @@ const LogoWrapper = styled.div`
   cursor: pointer;
 `;
 
-const Logo = styled.a`
+const Logo = styled.a<{ $device: TDevice }>`
   text-decoration: none;
   font-size: 1.5rem;
   font-weight: 500;
 
   color: ${({ theme }) => theme.color};
+
+  ${({ $device }) => {
+    if ($device === 'mobile') {
+      return css`
+        font-size: 1.4rem;
+      `;
+    }
+  }}
 `;
 
 const ItemWrapper = styled.div`
@@ -66,11 +81,18 @@ const Item = styled.div`
   cursor: pointer;
 `;
 
-const Label = styled.span`
+const Label = styled.span<{ $device: TDevice }>`
   font-size: 1.25rem;
   font-weight: 500;
 
   color: ${({ theme }) => theme.color};
+  ${({ $device }) => {
+    if ($device === 'mobile') {
+      return css`
+        font-size: 1.1rem;
+      `;
+    }
+  }}
 `;
 
 export { NavContainer, Header, LogoWrapper, Logo, Label, ItemWrapper, Item };

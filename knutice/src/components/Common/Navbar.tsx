@@ -18,20 +18,22 @@ interface INavbar {
 
 const Navbar = ({ device, mode, themeHandler }: INavbar) => {
   return (
-    <NavContainer>
+    <NavContainer $device={device}>
       <Header $device={device}>
         <LogoWrapper>
-          <Logo href="/">KNUTICE</Logo>
+          <Logo $device={device} href="/">
+            KNUTICE
+          </Logo>
         </LogoWrapper>
         <ItemWrapper>
           <Link href="/">
             <Item>
-              <Label>소개</Label>
+              <Label $device={device}>소개</Label>
             </Item>
           </Link>
           <Link href="/notice">
             <Item>
-              <Label>공지</Label>
+              <Label $device={device}>공지</Label>
             </Item>
           </Link>
           <Item>
