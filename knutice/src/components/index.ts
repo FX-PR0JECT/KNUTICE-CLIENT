@@ -11,3 +11,4 @@ export { default as Tabs } from './Notice/Tabs';
 export { default as ContentImage } from './Notice/ContentImage';
 export { default as NoticeList } from './Notice/NoticeList';
 export { default as MainContent } from './Notice/MainContent';
+export { default as Empty } from './Notice/Empty';
