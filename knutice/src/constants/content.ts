@@ -10,6 +10,10 @@ const NOTICE_CONTENT = Object.freeze({
   description: '우리 학교 공지를 한곳에서 빠르게',
 });
 
+const EMPTY_TEXT = Object.freeze({
+  text: '최근 일주일 간 올라온 공지가 없어요.',
+});
+
 export interface INoticeTabs {
   general: string;
   event: string;
@@ -24,4 +28,4 @@ const NOTICE_TABS: INoticeTabs = {
   academic: '학사',
 };
 
-export { MAIN_CONTENT, NOTICE_CONTENT, NOTICE_TABS };
+export { MAIN_CONTENT, NOTICE_CONTENT, EMPTY_TEXT, NOTICE_TABS };
