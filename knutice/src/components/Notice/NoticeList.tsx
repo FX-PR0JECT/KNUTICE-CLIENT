@@ -17,7 +17,7 @@ import {
 } from '@/styles/Notice/NoticeList';
 import { API_URL } from '@/services/api';
 import { departmentTag } from '@/utils/departmentTag';
-import { ContentImage, SkeletonCard } from '@/components';
+import { ContentImage, SkeletonCard, Empty } from '@/components';
 
 interface INotice {
   departName: string;
@@ -90,6 +90,8 @@ const NoticeList = ({ device }: { device: TDevice }) => {
       </NoticeCardList>
     );
   }
+
+  if (data.pages[0].length === 0) return <Empty device={device} />;
 
   if (isError) return <></>;
 
